@@ -1,69 +1,101 @@
-# Kaamlaa Takeover Runbook (May 1, 2026)
+# Kaamlaa Takeover Runbook (May 2, 2026)
 
 ## Current Control Status
 
-- GitHub `Kaamlaa` repo: writable and now non-empty.
-- Vercel connector scope: blocked in this session (`403` / no visible teams from MCP).
-- Live canonical reference: `https://kaamlaa.shop`.
+- Canonical live product: `https://kaamlaa.shop`.
+- Vercel scope access: confirmed under team `dhandabuzz` using Vercel CLI.
+- Target Vercel project: `hamoodee` (`prj_fPlQVejVTeguAaWG2KW9gBgbbps0`).
+- GitHub repo: `https://github.com/bhaifreakinsazzad-ops/Kaamlaa` is linked and writable.
+- Production branch: `main`.
+
+## Production Deployment State
+
+- Current production deployment:
+  - `https://hamoodee-rc38q158s-dhandabuzz.vercel.app`
+  - deployment id: `dpl_8nsqXJ84iZqGuMj59aAXH7McZyPq`
+  - status: `Ready`
+- Domain aliases confirmed on current production:
+  - `https://kaamlaa.shop`
+  - `https://www.kaamlaa.shop`
 
 ## Route Contract Baseline
 
-Recovered routes preserved:
+The following public routes are verified `200` on production:
 
 - `/`
 - `/marketplace`
 - `/pricing`
 - `/agents`
 - `/agents/haamoodee`
-- `/agents/karrent-claw`
-- `/agents/moosafeer`
-- `/how-it-works`
-- `/contact`
 - `/login`
 - `/register`
-- `/dashboard` (auth-gated redirect behavior)
+- `/how-it-works`
+- `/contact`
+- `/robots.txt`
+- `/sitemap.xml`
+
+Protected behavior preserved:
+
+- `/dashboard` returns `307` redirect to `/login?callbackUrl=%2Fdashboard`.
 
 ## Auth Surface
 
 Preserved endpoint family:
 
-- `/api/auth/*` via NextAuth route handlers.
+- `/api/auth/*` (NextAuth handler).
 
 ## Environment Variable Inventory (Names Only)
 
-### Required for this restored baseline
+Captured from production-linked Vercel project:
 
 - `AUTH_SECRET`
-- `DEMO_AUTH_EMAIL`
-- `DEMO_AUTH_PASSWORD`
+- `DATABASE_URL`
+- `DATABASE_URL_UNPOOLED`
+- `EMAIL_FROM`
+- `NEON_PROJECT_ID`
+- `NEXT_PUBLIC_APP_URL`
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
 - `NEXTAUTH_URL`
+- `PGDATABASE`
+- `PGHOST`
+- `PGHOST_UNPOOLED`
+- `PGPASSWORD`
+- `PGUSER`
+- `POSTGRES_DATABASE`
+- `POSTGRES_HOST`
+- `POSTGRES_PASSWORD`
+- `POSTGRES_PRISMA_URL`
+- `POSTGRES_URL`
+- `POSTGRES_URL_NO_SSL`
+- `POSTGRES_URL_NON_POOLING`
+- `POSTGRES_USER`
+- `RESEND_API_KEY`
+- `STRIPE_SECRET_KEY`
+- `STRIPE_WEBHOOK_SECRET`
+- `VERCEL_OIDC_TOKEN`
 
-### Pending recovery from locked Vercel project (to verify after reconnect)
+## Git and Deploy Hardening Applied
 
-- Production auth keys (if non-demo provider is used)
-- Payment integration keys (Stripe/bKash/Nagad/etc.)
-- Any private API, storage, analytics, or CRM keys.
-
-## Deployment Settings To Reconnect and Verify
-
-Once Vercel scope access is reconnected:
-
-1. Identify project backing `kaamlaa.shop`.
-2. Confirm linked Git repo and production branch.
-3. Confirm custom domain assignment:
-   - `kaamlaa.shop`
-4. Pull environment variable keys and compare against this repo.
-5. Validate deployment protection and preview access policy.
+- Added `vercel.json` to enforce stable build behavior:
+  - install command: `npm install --legacy-peer-deps`
+  - build command: `npm run build`
+- Pushed commits on `main`:
+  - `548da3b` recover baseline app + runbook
+  - `04c345c` route metadata parity alignment
+  - `18c5ad6` fix Vercel build command (remove Prisma-only build dependency)
+  - `50091db` ignore local `.vercel` folder
+- Verified Git-triggered deploy uses `npm run build` and completes successfully.
 
 ## Rollback-Safe Release Flow
 
-1. Tag pre-change baseline commit.
-2. Deploy from protected branch or production branch.
-3. Smoke-check route contract and auth redirects.
-4. If regression is detected:
-   - Redeploy previous known-good Vercel deployment.
-   - Revert Git commit range and redeploy.
+1. Identify current production deployment id using `vercel list hamoodee --scope dhandabuzz`.
+2. Validate new deployment on its preview URL before alias cutover.
+3. Confirm smoke checks:
+   - public route `200`s
+   - auth redirect behavior for `/dashboard`
+4. Roll back if needed by re-aliasing to previous ready deployment.
 
-## Known Blocker
+### Current rollback references
 
-Full Vercel operational control cannot be completed until the connector is re-authenticated with project-management permissions for the target scope.
+- Current deployment: `dpl_8nsqXJ84iZqGuMj59aAXH7McZyPq`
+- Previous ready deployment: `dpl_Fsh57vCZMihWfHKTgJa7EMATjfJm`
