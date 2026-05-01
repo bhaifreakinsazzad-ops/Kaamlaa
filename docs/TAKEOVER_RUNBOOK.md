@@ -11,8 +11,8 @@
 ## Production Deployment State
 
 - Current production deployment:
-  - `https://hamoodee-rc38q158s-dhandabuzz.vercel.app`
-  - deployment id: `dpl_8nsqXJ84iZqGuMj59aAXH7McZyPq`
+  - `https://hamoodee-ncq49ffsj-dhandabuzz.vercel.app`
+  - deployment id: `dpl_GG5Z2FC1yd2ScQ8ZP9SPFBYLyUrp`
   - status: `Ready`
 - Domain aliases confirmed on current production:
   - `https://kaamlaa.shop`
@@ -97,5 +97,5 @@ Captured from production-linked Vercel project:
 
 ### Current rollback references
 
-- Current deployment: `dpl_8nsqXJ84iZqGuMj59aAXH7McZyPq`
-- Previous ready deployment: `dpl_Fsh57vCZMihWfHKTgJa7EMATjfJm`
+- Current deployment: `dpl_GG5Z2FC1yd2ScQ8ZP9SPFBYLyUrp`
+- Previous ready deployment: `dpl_8nsqXJ84iZqGuMj59aAXH7McZyPq`
