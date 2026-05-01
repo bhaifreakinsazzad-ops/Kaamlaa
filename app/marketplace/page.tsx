@@ -1,5 +1,11 @@
 import SiteFrame from "@/app/components/site-frame";
 import { marketplaceCards } from "@/app/lib/content";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Marketplace | Kaamlaa | Kaamlaa",
+  description: "Browse productized business offers, AI-generated assets, and service packages on Kaamlaa.",
+};
 
 export default function MarketplacePage() {
   return (

@@ -1,4 +1,11 @@
 import SiteFrame from "@/app/components/site-frame";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Karrent Claw - Device Task Completion Agent | Kaamlaa",
+  description:
+    "Karrent Claw helps founders complete browser and operations tasks with explicit approval checkpoints, safe execution, and clean handoff reports.",
+};
 
 export default function KarrentClawPage() {
   return (

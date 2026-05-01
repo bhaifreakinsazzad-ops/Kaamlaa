@@ -1,5 +1,11 @@
 import SiteFrame from "@/app/components/site-frame";
 import { pricingTiers } from "@/app/lib/content";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pricing | Kaamlaa | Kaamlaa",
+  description: "Simple Kaamlaa pricing for the MVP: Starter, Growth, and Pro tiers.",
+};
 
 export default function PricingPage() {
   return (

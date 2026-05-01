@@ -1,4 +1,11 @@
 import SiteFrame from "@/app/components/site-frame";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Haamoodee — AI Sales & Customer Agent | Kaamlaa",
+  description:
+    "Haamoodee হলো Kaamlaa-এর flagship AI agent। Facebook sellers-দের জন্য customer DM reply, lead capture, order intake, campaign copy। Sell, Rent, বা Hire করুন — bKash দিয়ে payment করুন।",
+};
 
 export default function HaamoodeePage() {
   return (

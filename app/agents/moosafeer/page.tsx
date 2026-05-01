@@ -1,4 +1,11 @@
 import SiteFrame from "@/app/components/site-frame";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Moosafeer - AI Tour Sales & Rental Concierge | Kaamlaa",
+  description:
+    "Moosafeer helps tour operators sell packages, rent vehicles and rooms, answer tourist questions, and capture booking details.",
+};
 
 export default function MoosafeerPage() {
   return (

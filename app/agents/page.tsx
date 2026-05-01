@@ -1,6 +1,12 @@
 import Link from "next/link";
 import SiteFrame from "@/app/components/site-frame";
 import { agentCards } from "@/app/lib/content";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Marketplace | Kaamlaa | Kaamlaa",
+  description: "Browse productized business offers, AI-generated assets, and service packages on Kaamlaa.",
+};
 
 export default function AgentsPage() {
   return (

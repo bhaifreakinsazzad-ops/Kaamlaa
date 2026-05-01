@@ -1,4 +1,11 @@
 import LoginForm from "@/app/login/login-form";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Kaamlaa - AI Agent Marketplace | Sell · Rent · Hire",
+  description:
+    "Kaamlaa is the AI Agent Marketplace for Bangladesh and beyond. Buy, subscribe, or pay-per-use AI agents including Haamoodee, Karrent Claw, and Moosafeer. bKash, Stripe, and bank transfer supported.",
+};
 
 type LoginPageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
